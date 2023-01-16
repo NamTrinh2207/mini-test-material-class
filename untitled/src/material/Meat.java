@@ -20,8 +20,8 @@ public class Meat extends Material {
 
     @Override
     public double getRealMoney() {
-        LocalDate today = LocalDate.now();
-        if (today.isBefore(getExpiryDate().minusDays(5))){
+        LocalDate today = manufacturingDate;
+        if (today.isAfter(getExpiryDate().minusDays(5))){
             return (getAmount() - (getAmount()* 0.3));
         }
         else {
@@ -36,14 +36,14 @@ public class Meat extends Material {
 
     @Override
     public LocalDate getExpiryDate() {
-        return getManufacturingDate().plusDays(7);
+        return LocalDate.now().plusDays(7);
     }
 
     @Override
     public String toString() {
         return "Thịt: " +
                 "Cân nặng=" + weight +
-                ", mã='" + id + '\'' +
+                ", id='" + id + '\'' +
                 ", Tên='" + name + '\'' +
                 ", Ngày sản xuất=" + manufacturingDate +
                 ", Giá =" + cost;
