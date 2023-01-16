@@ -20,12 +20,19 @@ public class CrispyFlour extends Material {
 
     @Override
     public double getRealMoney() {
-        return 0;
+        LocalDate today = LocalDate.now();
+        if (today.isBefore(getExpiryDate().minusMonths(2))) {
+            return getAmount() - (getAmount()* 0.4);
+        } else if (today.isBefore(getExpiryDate().minusMonths(4))) {
+            return getAmount() - (getAmount()* 0.2);
+        } else {
+            return getAmount() - (getAmount()* 0.05);
+        }
     }
 
     @Override
     public double getAmount() {
-        return this.quantity * getCost();
+        return getCost() * getQuantity();
     }
 
     @Override
@@ -36,10 +43,10 @@ public class CrispyFlour extends Material {
     @Override
     public String toString() {
         return "Bột mỳ : " +
-                "số lượng=" + quantity +
+                "Số lượng =" + quantity +
                 ",mã='" + id + '\'' +
                 ", tên='" + name + '\'' +
                 ", ngày sản xuất=" + manufacturingDate +
-                ", số lượng=" + cost;
+                ", Giá =" + cost;
     }
 }
