@@ -86,11 +86,14 @@ public class MaterialManager {
         for (int i = 0; i < materials.size(); i++) {
             if (i == index) {
                 materials.remove(i);
+                print();
+                differenceMeat();
+                differenceCrispyFlour();
+            }else if (index>= materials.size()){
+                System.out.println("Không tìm thấy vị trí số "+index);
+                break;
             }
         }
-        print();
-        differenceMeat();
-        differenceCrispyFlour();
     }
 
     //thêm đối tượng
@@ -100,13 +103,13 @@ public class MaterialManager {
             if (i == index) {
                 materials.add(i, material);
                 print();
+                differenceMeat();
+                differenceCrispyFlour();
             } else if (index >= materials.size()) {
                 materials.add(material);
-                print();
+                System.out.println("Không thể thêm tại vị trí số "+index);
                 break;
             }
         }
-        differenceMeat();
-        differenceCrispyFlour();
     }
 }
