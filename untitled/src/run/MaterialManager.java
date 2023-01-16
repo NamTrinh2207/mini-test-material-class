@@ -71,12 +71,12 @@ public class MaterialManager {
     }
 
     public void inputAdd() {
-        System.out.print("Nhập đối tượng muốn thêm thứ index: ");
+        System.out.print("Nhập vị trí muốn thêm thứ index: ");
         index = input.nextInt();
     }
 
     public void inputDel() {
-        System.out.print("Nhập đối tượng muốn xóa thứ index: ");
+        System.out.print("Nhập vị trí muốn xóa thứ index: ");
         index = input.nextInt();
     }
 
