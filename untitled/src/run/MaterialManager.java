@@ -3,6 +3,7 @@ package run;
 import material.CrispyFlour;
 import material.Material;
 import material.Meat;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,16 +15,16 @@ public class MaterialManager {
 
     public MaterialManager() {
         materials = new ArrayList<>();
-        materials.add(new Meat("1", "Thịt lợn 1", LocalDate.now().plusDays(1), 100, 1));
-        materials.add(new Meat("2", "Thịt lợn 2", LocalDate.now().plusDays(2), 100, 1));
-        materials.add(new Meat("3", "Thịt lợn 3", LocalDate.now().plusDays(3), 100, 1));
-        materials.add(new Meat("4", "Thịt lợn 4", LocalDate.now().plusDays(4), 100, 1));
-        materials.add(new Meat("5", "Thịt lợn 5", LocalDate.now().plusDays(5), 100, 1));
-        materials.add(new CrispyFlour("6", "Bột 1", LocalDate.now().plusDays(1), 100, 1));
-        materials.add(new CrispyFlour("7", "Bột 2", LocalDate.now().plusDays(2), 100, 1));
-        materials.add(new CrispyFlour("8", "Bột 3", LocalDate.now().plusDays(3), 100, 1));
-        materials.add(new CrispyFlour("9", "Bột 4", LocalDate.now().plusDays(4), 100, 1));
-        materials.add(new CrispyFlour("10", "Bột 5", LocalDate.now().plusDays(5), 100, 1));
+        materials.add(new Meat("m1", "Thịt lợn 1", LocalDate.now().plusDays(1), 100, 1));
+        materials.add(new Meat("m2", "Thịt lợn 2", LocalDate.now().plusDays(2), 100, 1));
+        materials.add(new Meat("m3", "Thịt lợn 3", LocalDate.now().plusDays(3), 100, 1));
+        materials.add(new Meat("m4", "Thịt lợn 4", LocalDate.now().plusDays(4), 100, 1));
+        materials.add(new Meat("m5", "Thịt lợn 5", LocalDate.now().plusDays(5), 100, 1));
+        materials.add(new CrispyFlour("f6", "Bột 1", LocalDate.now().plusDays(1), 100, 1));
+        materials.add(new CrispyFlour("f7", "Bột 2", LocalDate.now().plusDays(2), 100, 1));
+        materials.add(new CrispyFlour("f8", "Bột 3", LocalDate.now().plusDays(3), 100, 1));
+        materials.add(new CrispyFlour("f9", "Bột 4", LocalDate.now().plusDays(4), 100, 1));
+        materials.add(new CrispyFlour("f10", "Bột 5", LocalDate.now().plusDays(5), 100, 1));
     }
 
     public void print() {
@@ -80,6 +81,11 @@ public class MaterialManager {
         index = input.nextInt();
     }
 
+    public void inputEdit() {
+        System.out.print("Nhập vị trí muốn sửa thứ index: ");
+        index = input.nextInt();
+    }
+
     //xóa đối tượng
     public void deleteElement() {
         inputDel();
@@ -89,8 +95,8 @@ public class MaterialManager {
                 print();
                 differenceMeat();
                 differenceCrispyFlour();
-            }else if (index>= materials.size()){
-                System.out.println("Không tìm thấy vị trí số "+index);
+            } else if (index >= materials.size()) {
+                System.out.println("Không tìm thấy vị trí số " + index);
                 break;
             }
         }
@@ -107,7 +113,24 @@ public class MaterialManager {
                 differenceCrispyFlour();
             } else if (index >= materials.size()) {
                 materials.add(material);
-                System.out.println("Không thể thêm tại vị trí số "+index);
+                System.out.println("Không thể thêm tại vị trí số " + index);
+                break;
+            }
+        }
+    }
+
+    //Sửa đối tượng
+    public void editElement(Material material) {
+        inputEdit();
+        for (int i = 0; i < materials.size(); i++) {
+            if (i == index) {
+                materials.set(i, material);
+                print();
+                differenceMeat();
+                differenceCrispyFlour();
+            } else if (index >= materials.size()) {
+                materials.add(material);
+                System.out.println("Không thể sửa tại vị trí số " + index);
                 break;
             }
         }

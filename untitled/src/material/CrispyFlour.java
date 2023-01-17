@@ -21,9 +21,10 @@ public class CrispyFlour extends Material {
     @Override
     public double getRealMoney() {
         LocalDate today = manufacturingDate;
-        if (today.isAfter(getExpiryDate().minusMonths(2))) {
+        LocalDate ExpiryDate = getExpiryDate();
+        if (today.isAfter(ExpiryDate.minusMonths(2))) {
             return getAmount() - (getAmount() * 0.4);
-        } else if (today.isAfter(getExpiryDate().minusMonths(4))) {
+        } else if (today.isAfter(ExpiryDate.minusMonths(4))) {
             return getAmount() - (getAmount() * 0.2);
         } else {
             return getAmount() - (getAmount() * 0.05);
