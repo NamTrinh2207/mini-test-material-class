@@ -3,7 +3,6 @@ package run;
 import material.CrispyFlour;
 import material.Material;
 import material.Meat;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,7 +31,6 @@ public class MaterialManager {
             System.out.println(material);
             System.out.println("Hạn SD: " + material.getExpiryDate());
         }
-        System.out.println("------------------------------------------------");
     }
 
     public void differenceMeat() {
@@ -68,33 +66,16 @@ public class MaterialManager {
         System.out.println("Giá gốc bột: " + costCrispyFlour);
         System.out.println("Giá sale bột: " + saleCrispyFlour);
         System.out.println("Giá chênh lệch bột: " + differenceCrispyFlour);
-        System.out.println("---------------------------------------------------");
     }
 
-    public void inputAdd() {
-        System.out.print("Nhập vị trí muốn thêm thứ index: ");
-        index = input.nextInt();
-    }
-
-    public void inputDel() {
-        System.out.print("Nhập vị trí muốn xóa thứ index: ");
-        index = input.nextInt();
-    }
-
-    public void inputEdit() {
-        System.out.print("Nhập vị trí muốn sửa thứ index: ");
-        index = input.nextInt();
-    }
 
     //xóa đối tượng
     public void deleteElement() {
-        inputDel();
+        System.out.print("Nhập vị trí muốn xóa: ");
+        index = input.nextInt();
         for (int i = 0; i < materials.size(); i++) {
             if (i == index) {
                 materials.remove(i);
-                print();
-                differenceMeat();
-                differenceCrispyFlour();
             } else if (index >= materials.size()) {
                 System.out.println("Không tìm thấy vị trí số " + index);
                 break;
@@ -104,13 +85,11 @@ public class MaterialManager {
 
     //thêm đối tượng
     public void addElement(Material material) {
-        inputAdd();
+        System.out.print("Nhập vị trí muốn thêm: ");
+        index = input.nextInt();
         for (int i = 0; i < materials.size(); i++) {
             if (i == index) {
                 materials.add(i, material);
-                print();
-                differenceMeat();
-                differenceCrispyFlour();
             } else if (index >= materials.size()) {
                 materials.add(material);
                 System.out.println("Không thể thêm tại vị trí số " + index);
@@ -121,15 +100,12 @@ public class MaterialManager {
 
     //Sửa đối tượng
     public void editElement(Material material) {
-        inputEdit();
+        System.out.print("Nhập vị trí muốn sửa: ");
+        index = input.nextInt();
         for (int i = 0; i < materials.size(); i++) {
             if (i == index) {
                 materials.set(i, material);
-                print();
-                differenceMeat();
-                differenceCrispyFlour();
             } else if (index >= materials.size()) {
-                materials.add(material);
                 System.out.println("Không thể sửa tại vị trí số " + index);
                 break;
             }
