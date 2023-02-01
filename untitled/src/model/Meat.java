@@ -1,4 +1,4 @@
-package material;
+package model;
 
 import java.time.LocalDate;
 
@@ -41,11 +41,11 @@ public class Meat extends Material {
 
     @Override
     public String toString() {
-        return "Thịt: " +
-                "Cân nặng=" + weight +
-                ", id='" + id + '\'' +
-                ", Tên='" + name + '\'' +
-                ", Ngày sản xuất=" + manufacturingDate +
-                ", Giá =" + cost;
+        return "Thịt :" +
+                ", mã sp = " + id +
+                ", tên = " + name +
+                ", ngày sản xuất = " + manufacturingDate +
+                ", giá = " + cost+
+                ", cân nặng = " + weight;
     }
 }

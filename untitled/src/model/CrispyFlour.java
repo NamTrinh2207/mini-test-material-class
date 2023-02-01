@@ -1,16 +1,16 @@
-package material;
+package model;
 
 import java.time.LocalDate;
 
 public class CrispyFlour extends Material {
-    private int quantity;
+    private double quantity;
 
-    public CrispyFlour(String id, String name, LocalDate manufacturingDate, int cost, int quantity) {
+    public CrispyFlour(String id, String name, LocalDate manufacturingDate, int cost, double quantity) {
         super(id, name, manufacturingDate, cost);
         this.quantity = quantity;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -43,11 +43,11 @@ public class CrispyFlour extends Material {
 
     @Override
     public String toString() {
-        return "Bột mỳ : " +
-                "Số lượng =" + quantity +
-                ",id='" + id + '\'' +
-                ", tên='" + name + '\'' +
-                ", ngày sản xuất=" + manufacturingDate +
-                ", Giá =" + cost;
+        return "Bột :" +
+                "  mã sp = " + id +
+                ", tên = " + name +
+                ", Ngày sx = " + manufacturingDate +
+                ", giá = " + cost +
+                ", số lượng =" + quantity;
     }
 }
